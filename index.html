@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Azafran Carrera - Exquisite saffron with a legacy of quality.">
+  <title>Azafran Carrera</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <!-- Clickable Brand (Logo and Text) -->
+    <a href="index.html" class="brand">
+      <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+      <span>Azafran Carrera</span>
+    </a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <!-- Language Dropdown with Flags -->
+      <li class="dropdown">
+        <a href="#">
+          <img src="images/flag_uk.svg" alt="English" class="flag-icon">
+        </a>
+        <div class="dropdown-content">
+          <a href="index.html">
+            <img src="images/flag_uk.svg" alt="English" class="flag-icon"> English
+          </a>
+          <a href="index_es.html">
+            <img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español
+          </a>
+          <a href="index_de.html">
+            <img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- WhatsApp Button (fixed at bottom right) -->
+  <div id="whatsapp-button">
+    <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+      <img src="images/whatsapp-icon.svg" alt="Contact us on WhatsApp">
+    </a>
+  </div>
+
+  <!-- Intro Section -->
+  <section id="intro" class="section">
+    <div class="intro-container">
+      <div class="intro-image">
+        <img src="images/saffron1.jpg" alt="Premium Saffron">
+      </div>
+      <div class="intro-text">
+        <h2>Experience the Essence of Excellence</h2>
+        <p>
+          At Azafran Carrera, quality and trust form the heart of our family-run business.
+          We harvest the finest saffron with care and passion, ensuring every strand meets our uncompromising standards.
+          With competitive prices and a promise of honesty, our saffron isn’t just a spice—it’s a legacy.
+          Join our family of satisfied customers and taste the true flavor of excellence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Home Section (Placeholder) -->
+    <section id="home" class="section">
+      <!-- Home content goes here -->
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <h2 class="section-title">Our Premium Selection</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="images/saffron2.jpg" alt="Saffron Package">
+        </div>
+        <div class="gallery-item">
+          <img src="images/saffron3.jpg" alt="Saffron Closeup">
+        </div>
+        <div class="gallery-item">
+          <img src="images/saffron4.jpg" alt="Saffron Harvest">
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2 class="section-title">Our Legacy</h2>
+      <p>
+        For generations, we've cultivated the world's finest saffron using time-honored traditions combined with modern quality assurance.
+        Our commitment to sustainable practices ensures every strand maintains its unparalleled aroma and vibrant color.
+      </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Contact Us</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <textarea rows="5" placeholder="Message" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2023 Azafran Carrera • Crafted with Excellence</p>
+  </footer>
+
+  <script>
+    // Simple scroll-reveal animations using IntersectionObserver
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
