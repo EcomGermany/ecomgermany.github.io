@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Azafran Carrera - Our Story">
+  <title>About - Azafran Carrera</title>
+  <!-- Einbindung der externen CSS-Datei -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand">
+      <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+      <span>Azafran Carrera</span>
+    </a>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <!-- Optional: Language Dropdown (mit Flaggen) -->
+      <li class="dropdown">
+        <a href="#"><img src="images/flag_us.svg" alt="English" class="flag-icon"></a>
+        <div class="dropdown-content">
+          <a href="index.html"><img src="images/flag_us.svg" alt="English" class="flag-icon"> English</a>
+          <a href="index_es.html"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
+          <a href="index_de.html"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- WhatsApp-Button (fixiert unten rechts) -->
+  <div id="whatsapp-button">
+    <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+      <img src="images/whatsapp-icon.svg" alt="Contact us on WhatsApp">
+    </a>
+  </div>
+
+  <!-- About Section -->
+  <section id="about-content" class="section about-section">
+    <div class="about-container">
+      <div class="about-image">
+        <!-- Platzhalterbild für die About-Seite -->
+        <img src="images/about_us.jpeg" alt="Our Story">
+      </div>
+      <div class="about-text">
+        <h2>Our Story</h2>
+        <p>
+          We are two brothers, Elyas and David, born and raised in Berlin. While studying, we dreamed of starting a company. Our passion for good food and our family’s roots in Spain motivated us to create a food company.
+        </p>
+        <p>
+          We import saffron from locally sourced companies that we personally know and keep in close contact with. This allows us to maintain strict quality control and ensure that every strand of saffron meets our high standards.
+        </p>
+        <p>
+          As new entrepreneurs, our top priority is to offer the best prices combined with exceptional quality so that our clients truly enjoy our products.
+        </p>
+        <p>
+          If you want to sell our saffron in your store or stores, use it in your restaurant, or simply enjoy it and cook with it, please do not hesitate to <a href="contact.html">contact us</a>.
+        </p>
+        <p class="impressum-placeholder">
+          <strong>Impressum:</strong><br>
+          Company Name: [Your Company Name]<br>
+          Address: [Your Address]<br>
+          Additional Legal Information: [Placeholder for further legal data]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2023 Azafran Carrera • Crafted with Excellence</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
