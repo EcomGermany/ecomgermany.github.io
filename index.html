@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Azafran Carrera - Exquisite saffron with a legacy of quality.">
+  <title>Azafran Carrera</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Page Wrapper for Sticky Footer -->
+  <div class="page-wrapper">
+    
+    <!-- Navigation Bar (Dark Header with Smart Hide/Show) -->
+    <nav id="main-nav">
+      <!-- Clickable Brand (Logo & Text) -->
+      <a href="index.html" class="brand">
+        <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        <span>Azafran Carrera</span>
+      </a>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <!-- Language Dropdown with Flag Icons -->
+        <li class="dropdown">
+          <a href="#">
+            <img src="images/flag_uk.svg" alt="English" class="flag-icon">
+          </a>
+          <div class="dropdown-content">
+            <a href="index.html">
+              <img src="images/flag_uk.svg" alt="English" class="flag-icon"> English
+            </a>
+            <a href="index_es.html">
+              <img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español
+            </a>
+            <a href="index_de.html">
+              <img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- Main Content Area (with top margin to offset fixed header) -->
+    <div class="main-content">
+      <!-- WhatsApp Button (fixed at bottom right) -->
+      <div id="whatsapp-button">
+        <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+          <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp">
+        </a>
+      </div>
+      
+      <!-- Intro Section -->
+      <section id="intro" class="section">
+        <div class="intro-container">
+          <div class="intro-image">
+            <img src="images/saffron1.jpg" alt="Premium Saffron">
+          </div>
+          <div class="intro-text">
+            <h2>Experience the Essence of Excellence</h2>
+            <p>
+              At Azafran Carrera, quality and trust form the heart of our family-run business.
+              We harvest the finest saffron with care and passion, ensuring every strand meets our uncompromising standards.
+              With competitive prices and a promise of honesty, our saffron isn’t just a spice—it’s a legacy.
+              Join our family of satisfied customers and taste the true flavor of excellence.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Additional Content Sections -->
+      <div class="container">
+        <!-- Products Section (for example) -->
+        <section id="products" class="section">
+          <h2 class="section-title">Our Premium Selection</h2>
+          <div class="gallery">
+            <div class="gallery-item">
+              <img src="images/saffron2.jpg" alt="Saffron Package">
+            </div>
+            <div class="gallery-item">
+              <img src="images/saffron3.jpg" alt="Saffron Closeup">
+            </div>
+            <div class="gallery-item">
+              <img src="images/saffron4.jpg" alt="Saffron Harvest">
+            </div>
+          </div>
+        </section>
+        
+        <!-- About Section (for example) -->
+        <section id="about" class="section">
+          <h2 class="section-title">Our Legacy</h2>
+          <p>
+            For generations, we've cultivated the world's finest saffron using time-honored traditions combined with modern quality assurance.
+            Our commitment to sustainable practices ensures every strand maintains its unparalleled aroma and vibrant color.
+          </p>
+        </section>
+        
+        <!-- Contact Section (for example) -->
+        <section id="contact" class="section">
+          <h2 class="section-title">Contact Us</h2>
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </section>
+      </div> <!-- end .container -->
+    </div> <!-- end .main-content -->
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        </div>
+        <div class="footer-links">
+          <a href="imprint.html">Imprint</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="shipping.html">Shipping Information</a>
+          <a href="faq.html">FAQ</a>
+          <a href="saffron-wiki.html">Saffron Wiki</a>
+          <a href="wholesale.html">Wholesale & Business Customers</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2023 Azafran Carrera • Crafted with Excellence</p>
+    </footer>
+  </div> <!-- end .page-wrapper -->
+  
+  <script>
+    // Smart header: hide when scrolling down, show when scrolling up or when mouse near top.
+    let lastScrollY = window.scrollY;
+    const nav = document.getElementById("main-nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        nav.style.top = "-120px";
+      } else {
+        nav.style.top = "0";
+      }
+      lastScrollY = window.scrollY;
+    });
+    document.addEventListener("mousemove", e => {
+      if (e.clientY < 50) {
+        nav.style.top = "0";
+      }
+    });
+    
+    // Scroll-Reveal Animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>

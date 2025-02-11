@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop - Azafran Carrera | Explore our premium saffron products.">
+  <title>Shop - Azafran Carrera</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="index.html" class="brand">
+        <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        <span>Azafran Carrera</span>
+      </a>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="#">
+            <img src="images/flag_uk.svg" alt="English" class="flag-icon">
+          </a>
+          <div class="dropdown-content">
+            <a href="index.html"><img src="images/flag_uk.svg" alt="English" class="flag-icon"> English</a>
+            <a href="index_es.html"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
+            <a href="index_de.html"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- WhatsApp Button -->
+    <div id="whatsapp-button">
+      <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+        <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp">
+      </a>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <div class="container">
+        <section id="coming-soon" class="section">
+          <h2 class="section-title">Shop – Coming Soon</h2>
+          <p>
+            We are working diligently to expand our services and set up a professional online shop.
+            Stay tuned for updates and get ready to shop our premium saffron collection soon!
+          </p>
+          <a href="index.html" class="back-button">Back to Home</a>
+        </section>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        </div>
+        <div class="footer-links">
+          <a href="imprint.html">Imprint</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="shipping.html">Shipping Information</a>
+          <a href="faq.html">FAQ</a>
+          <a href="saffron-wiki.html">Saffron Wiki</a>
+          <a href="wholesale.html">Wholesale &amp; Business Customers</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2023 Azafran Carrera • Crafted with Excellence</p>
+    </footer>
+  </div> <!-- end .page-wrapper -->
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>

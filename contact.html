@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact - Azafran Carrera | Supply your restaurant or business with premium saffron.">
+  <title>Contact - Azafran Carrera</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Navigation Bar -->
+    <nav id="main-nav">
+      <a href="index.html" class="brand">
+        <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        <span>Azafran Carrera</span>
+      </a>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="#">
+            <img src="images/flag_uk.svg" alt="English" class="flag-icon">
+          </a>
+          <div class="dropdown-content">
+            <a href="index.html"><img src="images/flag_uk.svg" alt="English" class="flag-icon"> English</a>
+            <a href="index_es.html"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
+            <a href="index_de.html"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- WhatsApp Button -->
+    <div id="whatsapp-button">
+      <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+        <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp">
+      </a>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <section id="contact" class="section">
+          <h2 class="section-title">For Restaurants & Business Customers</h2>
+          <p>
+            We specialize in supplying premium saffron in bulk to restaurants, retail stores, and large business customers.
+            Our commitment to quality and competitive pricing ensures you get the best saffron available for your culinary or business needs.
+            If you're interested in purchasing our saffron in large quantities, please use the contact form below to get in touch with us.
+          </p>
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        </div>
+        <div class="footer-links">
+          <a href="imprint.html">Imprint</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="shipping.html">Shipping Information</a>
+          <a href="faq.html">FAQ</a>
+          <a href="saffron-wiki.html">Saffron Wiki</a>
+          <a href="wholesale.html">Wholesale & Business Customers</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2023 Azafran Carrera • Crafted with Excellence</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
+    let lastScrollY = window.scrollY;
+    const nav = document.getElementById("main-nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        nav.style.top = "-120px";
+      } else {
+        nav.style.top = "0";
+      }
+      lastScrollY = window.scrollY;
+    });
+    document.addEventListener("mousemove", e => {
+      if (e.clientY < 50) {
+        nav.style.top = "0";
+      }
+    });
+    
+    // Scroll-Reveal Animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
