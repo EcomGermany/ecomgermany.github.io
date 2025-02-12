@@ -11,10 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loader Overlay (will appear only once using localStorage) -->
+  <!-- Loader Overlay -->
   <div id="loader">
-    <!-- The animated logo is loaded via an iframe.
-         The CSS forces it to display as a circle. -->
+    <!-- The animated logo is loaded via an iframe. The CSS forces it to be circular. -->
     <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
   </div>
 
@@ -109,9 +108,10 @@
           </p>
         </section>
         
-        <!-- Contact Section with Updated Form -->
+        <!-- Contact Section -->
         <section id="contact" class="section">
           <h2 class="section-title">Contact Us</h2>
+          <!-- Extra space below the description -->
           <p class="contact-description" style="margin-bottom:20px;">
             If you have any questions or inquiries, please fill out the form below:
           </p>
@@ -165,41 +165,39 @@
   </div> <!-- end .page-wrapper -->
   
   <script>
-    // Loader: Use localStorage so the loader appears only once per browser.
-    if (!localStorage.getItem("loaderShown")) {
-      window.addEventListener("load", () => {
+    document.addEventListener("DOMContentLoaded", function() {
+      // Loader: Use localStorage so the loader appears only once per browser.
+      const loader = document.getElementById("loader");
+      if (!localStorage.getItem("loaderShown")) {
         setTimeout(() => {
-          const loader = document.getElementById("loader");
           loader.style.clipPath = "circle(0% at center)";
           loader.addEventListener("transitionend", () => {
             loader.style.display = "none";
             localStorage.setItem("loaderShown", "true");
           });
         }, 1500);
-      });
-    } else {
-      document.getElementById("loader").style.display = "none";
-    }
-    
-    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
-    let lastScrollY = window.scrollY;
-    const nav = document.getElementById("main-nav");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        nav.style.top = "-120px";
       } else {
-        nav.style.top = "0";
+        loader.style.display = "none";
       }
-      lastScrollY = window.scrollY;
-    });
-    document.addEventListener("mousemove", e => {
-      if (e.clientY < 50) {
-        nav.style.top = "0";
-      }
-    });
-    
-    // Scroll-Reveal Animations using IntersectionObserver
-    document.addEventListener("DOMContentLoaded", function() {
+      
+      // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
+      let lastScrollY = window.scrollY;
+      const nav = document.getElementById("main-nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+          nav.style.top = "-120px";
+        } else {
+          nav.style.top = "0";
+        }
+        lastScrollY = window.scrollY;
+      });
+      document.addEventListener("mousemove", e => {
+        if (e.clientY < 50) {
+          nav.style.top = "0";
+        }
+      });
+      
+      // Scroll-Reveal Animations using IntersectionObserver
       const sections = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
