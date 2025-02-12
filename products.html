@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Products - Azafran Carrera | Discover the history, general information, and health benefits of saffron.">
+  <title>Products - Azafran Carrera</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Placeholder for Header (loaded via fetch from header.html) -->
+  <div id="header"></div>
+
+  <div class="page-wrapper">
+    <!-- Optional: If you want the WhatsApp button on every page, 
+         you can keep it here or put it in header.html -->
+    <div id="whatsapp-button" style="position: fixed; bottom: 20px; right: 20px; z-index: 1001;">
+      <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
+        <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp" style="width: 60px; height: 60px;">
+      </a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <div class="container">
+        <section id="products" class="section">
+          <h2 class="section-title">The History and Benefits of Saffron</h2>
+          <article class="product-info">
+            <h3>A Storied Legacy</h3>
+            <p>
+              Saffron, often referred to as “red gold,” has been prized for thousands of years.
+              Its roots trace back to ancient civilizations where it was not only a luxurious spice but also a symbol of wealth and healing.
+              Today, we continue that legacy by carefully sourcing and controlling quality.
+            </p>
+            <h3>General Information &amp; Health Benefits</h3>
+            <p>
+              Derived from the delicate stigmas of the <em>Crocus sativus</em> flower, saffron is renowned for its unique flavor,
+              vibrant color, and impressive antioxidant properties. It helps combat free radicals, supports digestion,
+              and may have anti-inflammatory benefits.
+            </p>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <!-- Placeholder for Footer (loaded via fetch from footer.html) -->
+    <div id="footer"></div>
+  </div> <!-- end .page-wrapper -->
+
+  <!-- Script to load header.html and footer.html via fetch -->
+  <script>
+    // Helper function to load partial HTML into a given selector
+    function loadPartial(selector, file) {
+      fetch(file)
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector(selector).innerHTML = data;
+        })
+        .catch(err => console.error(`Error loading ${file}:`, err));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load the header and footer partials
+      loadPartial("#header", "header.html");
+      loadPartial("#footer", "footer.html");
+
+      // After partials are loaded, we can run additional code (like scroll reveals).
+      // But note: any code that references header elements must run after they've loaded.
+      
+      // Basic scroll-reveal logic:
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>

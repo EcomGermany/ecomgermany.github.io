@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Save this as logo.svg -->
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 200">
+  <!-- Group to center the logo design -->
+  <g transform="translate(100,100)">
+    <!-- Petal at 0° -->
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="#8E44AD"/>
+    <!-- Petal at 120° -->
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="#C6A769" transform="rotate(120)"/>
+    <!-- Petal at 240° -->
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="#8E44AD" transform="rotate(240)"/>
+    <!-- Central circle (stamen) -->
+    <circle cx="0" cy="0" r="10" fill="#C6A769"/>
+  </g>
+</svg>
