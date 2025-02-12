@@ -33,16 +33,39 @@ body {
   flex: 1;
 }
 
-/* Main Content grows to fill available space; add top margin to avoid header overlap */
+/* Main Content grows to fill available space; top margin to offset fixed header */
 .main-content {
   flex: 1;
-  margin-top: 120px; /* Adjust this value if needed */
+  margin-top: 120px;
+}
+
+/* Loader Overlay */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(150% at center);
+  transition: clip-path 1s ease;
+}
+
+#loader iframe {
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50%;
 }
 
 /* Navigation Bar (Dark Header with Smart Hide/Show) */
 nav {
-  background: #1a1a1a;  /* Dark header background */
-  padding: 0 1rem;      /* Horizontal padding only */
+  background: #1a1a1a;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,7 +84,7 @@ nav {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-weight: bold;
-  color: var(--main-bg);  /* Light text for dark header */
+  color: var(--main-bg);
   text-decoration: none;
   cursor: pointer;
 }
@@ -78,7 +101,7 @@ nav ul {
 }
 
 nav a {
-  color: var(--main-bg); /* Light text for dark header */
+  color: var(--main-bg);
   text-decoration: none;
   font-size: 0.9rem;
   letter-spacing: 1px;
@@ -117,7 +140,7 @@ li.dropdown > a {
   right: 0;
   background: #1a1a1a;
   min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   border-radius: 4px;
   z-index: 1;
 }
@@ -332,8 +355,8 @@ button:hover {
 
 /* Footer with Dark Background and Extra Links */
 footer {
-  background: #1a1a1a; /* Dark background */
-  color: var(--main-bg); /* Light text */
+  background: #1a1a1a;
+  color: var(--main-bg);
   padding: 2rem;
   text-align: center;
   border-top: 1px solid var(--gold);
@@ -409,7 +432,7 @@ footer {
 
 .recipe-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .recipe-item img {
@@ -492,7 +515,7 @@ footer {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   nav {
-    padding: 0.2rem 1rem; /* Further reduce padding on mobile */
+    padding: 0.2rem 1rem;
   }
   .brand img {
     height: 70px;
