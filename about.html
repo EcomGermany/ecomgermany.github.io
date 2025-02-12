@@ -10,17 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Page Wrapper for sticky footer layout -->
+  <!-- Loader Overlay -->
+  <div id="loader">
+    <!-- The animated logo is loaded via an iframe. The CSS forces it to be circular. -->
+    <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
+  </div>
+
+  <!-- Page Wrapper for Sticky Footer Layout -->
   <div class="page-wrapper">
   
     <!-- Navigation Bar (Dark Header with Smart Hide/Show) -->
     <nav id="main-nav">
       <!-- Clickable Brand (Logo & Text) -->
       <a href="index.html" class="brand">
-        <img src="images/saffron.svg" alt="Azafran Carrera Logo">
-        <span>Azafran Carrera</span>
+        <img src="images/Azafranes Carrera Logo.svg" alt="Azafran Carrera Logo" class="logo-image">
+        <span class="brand-text">Azafran Carrera</span>
       </a>
-      <ul>
+      <!-- Hamburger Icon (hidden on desktop, shown on mobile) -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <!-- Navigation Links -->
+      <ul id="nav-links">
         <li><a href="index.html#home">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="recipes.html">Recipes</a></li>
@@ -33,9 +46,15 @@
             <img src="images/flag_uk.svg" alt="English" class="flag-icon">
           </a>
           <div class="dropdown-content">
-            <a href="index.html"><img src="images/flag_uk.svg" alt="English" class="flag-icon"> English</a>
-            <a href="index_es.html"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
-            <a href="index_de.html"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
+            <a href="index.html?lang=en">
+              <img src="images/flag_uk.svg" alt="English" class="flag-icon"> English
+            </a>
+            <a href="index.html?lang=es">
+              <img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español
+            </a>
+            <a href="index.html?lang=de">
+              <img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch
+            </a>
           </div>
         </li>
       </ul>
@@ -96,7 +115,29 @@
   </div> <!-- end .page-wrapper -->
   
   <script>
-    // Smart header: hide when scrolling down, show when scrolling up or when mouse near the top.
+    // Loader: Use sessionStorage so loader appears only once per session.
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById("loader");
+      if (!sessionStorage.getItem("loaderShown")) {
+        setTimeout(() => {
+          loader.style.clipPath = "circle(0% at center)";
+          loader.addEventListener("transitionend", () => {
+            loader.style.display = "none";
+            sessionStorage.setItem("loaderShown", "true");
+          });
+        }, 1500);
+      } else {
+        loader.style.display = "none";
+      }
+    });
+
+    // Toggle Menu for mobile
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Smart header
     let lastScrollY = window.scrollY;
     const nav = document.getElementById("main-nav");
     window.addEventListener("scroll", () => {
@@ -113,7 +154,7 @@
       }
     });
     
-    // Scroll-Reveal Animations using IntersectionObserver
+    // Scroll-Reveal Animations
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries, observer) => {
