@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navigation Bar (reuse your navigation code here) -->
+    <!-- Navigation Bar -->
     <nav id="main-nav">
       <a href="index.html" class="brand">
         <img src="images/saffron.svg" alt="Azafran Carrera Logo">
@@ -49,13 +49,13 @@
       <div class="container">
         <section id="contact" class="section">
           <h2 class="section-title">For Restaurants & Business Customers</h2>
-          <p>
+          <p class="contact-description">
             We specialize in supplying premium saffron in bulk to restaurants, retail stores, and large business customers.
             Our commitment to quality and competitive pricing ensures you get the best saffron available for your culinary or business needs.
             If you're interested in purchasing our saffron in large quantities, please use the contact form below to get in touch with us.
           </p>
-          <!-- Contact Form -->
-          <form class="contact-form" action="https://formspree.io/f/abcd1234" method="POST">
+          <!-- Contact Form using Formspree -->
+          <form class="contact-form" action="https://formspree.io/f/mqaeddwj" method="POST">
             <div class="form-group">
               <label for="name">Full Name *</label>
               <input type="text" name="name" id="name" placeholder="Your full name" required>
@@ -85,7 +85,7 @@
       </div>
     </div>
     
-    <!-- Footer (reuse your footer code here) -->
+    <!-- Footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-logo">
@@ -105,7 +105,7 @@
   </div> <!-- end .page-wrapper -->
   
   <script>
-    // (Include your existing JavaScript for the smart header and scroll animations here)
+    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
     let lastScrollY = window.scrollY;
     const nav = document.getElementById("main-nav");
     window.addEventListener("scroll", () => {
@@ -122,6 +122,7 @@
       }
     });
     
+    // Scroll-Reveal Animations using IntersectionObserver
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries, observer) => {
