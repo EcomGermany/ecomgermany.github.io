@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar (reuse your navigation code here) -->
     <nav id="main-nav">
       <a href="index.html" class="brand">
         <img src="images/saffron.svg" alt="Azafran Carrera Logo">
@@ -54,17 +54,18 @@
             Our commitment to quality and competitive pricing ensures you get the best saffron available for your culinary or business needs.
             If you're interested in purchasing our saffron in large quantities, please use the contact form below to get in touch with us.
           </p>
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <!-- Contact Form -->
+          <form class="contact-form" action="https://formspree.io/f/abcd1234" method="POST">
             <div class="form-group">
-              <label id="label-name" for="name">Full Name *</label>
+              <label for="name">Full Name *</label>
               <input type="text" name="name" id="name" placeholder="Your full name" required>
             </div>
             <div class="form-group">
-              <label id="label-email" for="email">Email Address *</label>
+              <label for="email">Email Address *</label>
               <input type="email" name="email" id="email" placeholder="Your email address" required>
             </div>
             <div class="form-group">
-              <label id="label-client" for="client-type">I am a *</label>
+              <label for="client-type">I am a *</label>
               <select name="client_type" id="client-type" required>
                 <option value="">Select an option</option>
                 <option value="private">Private Client</option>
@@ -75,16 +76,16 @@
               </select>
             </div>
             <div class="form-group">
-              <label id="label-message" for="message">Message *</label>
+              <label for="message">Message *</label>
               <textarea name="message" id="message" rows="5" placeholder="Your message" required></textarea>
             </div>
-            <button id="submit-button" type="submit">Send Message</button>
+            <button type="submit">Send Message</button>
           </form>
         </section>
       </div>
     </div>
     
-    <!-- Footer -->
+    <!-- Footer (reuse your footer code here) -->
     <footer>
       <div class="footer-content">
         <div class="footer-logo">
@@ -104,7 +105,7 @@
   </div> <!-- end .page-wrapper -->
   
   <script>
-    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
+    // (Include your existing JavaScript for the smart header and scroll animations here)
     let lastScrollY = window.scrollY;
     const nav = document.getElementById("main-nav");
     window.addEventListener("scroll", () => {
@@ -121,7 +122,6 @@
       }
     });
     
-    // Scroll-Reveal Animations
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries, observer) => {
@@ -135,7 +135,5 @@
       sections.forEach(section => observer.observe(section));
     });
   </script>
-  <!-- Include the localization script -->
-  <script src="localization.js"></script>
 </body>
 </html>
