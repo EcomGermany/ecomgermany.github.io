@@ -11,19 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loader Overlay (only appears once per session) -->
+  <!-- Loader Overlay -->
   <div id="loader">
+    <!-- The animated logo is loaded via an iframe.
+         The CSS forces it to be circular. -->
     <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
   </div>
 
   <!-- Page Wrapper for Sticky Footer Layout -->
   <div class="page-wrapper">
-    
+  
     <!-- Navigation Bar (Dark Header with Smart Hide/Show) -->
     <nav id="main-nav">
       <!-- Clickable Brand (Logo & Text) -->
       <a href="index.html" class="brand">
-        <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+        <img src="images/Azafranes Carrera Logo.svg" alt="Azafran Carrera Logo">
         <span>Azafran Carrera</span>
       </a>
       <ul>
@@ -39,13 +41,13 @@
             <img src="images/flag_uk.svg" alt="English" class="flag-icon">
           </a>
           <div class="dropdown-content">
-            <a href="index.html">
+            <a href="index.html?lang=en">
               <img src="images/flag_uk.svg" alt="English" class="flag-icon"> English
             </a>
-            <a href="index_es.html">
+            <a href="index.html?lang=es">
               <img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español
             </a>
-            <a href="index_de.html">
+            <a href="index.html?lang=de">
               <img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch
             </a>
           </div>
@@ -82,7 +84,7 @@
       
       <!-- Additional Content Sections -->
       <div class="container">
-        <!-- Products Section (example) -->
+        <!-- Products Section -->
         <section id="products" class="section">
           <h2 class="section-title">Our Premium Selection</h2>
           <div class="gallery">
@@ -98,7 +100,7 @@
           </div>
         </section>
         
-        <!-- About Section (example) -->
+        <!-- About Section -->
         <section id="about" class="section">
           <h2 class="section-title">Our Legacy</h2>
           <p>
@@ -107,10 +109,14 @@
           </p>
         </section>
         
-        <!-- Contact Section (example) -->
+        <!-- Contact Section -->
         <section id="contact" class="section">
           <h2 class="section-title">Contact Us</h2>
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <!-- Added extra spacing between description and form -->
+          <p class="contact-description" style="margin-bottom:20px;">
+            If you have any questions or inquiries, please fill out the form below:
+          </p>
+          <form class="contact-form" action="https://formspree.io/f/mqaeddwj" method="POST">
             <div class="form-group">
               <input type="text" name="name" placeholder="Name" required>
             </div>
@@ -130,7 +136,7 @@
     <footer>
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="images/saffron.svg" alt="Azafran Carrera Logo">
+          <img src="images/Azafranes Carrera Logo.svg" alt="Azafran Carrera Logo">
         </div>
         <div class="footer-links">
           <a href="imprint.html">Imprint</a>
@@ -145,25 +151,19 @@
     </footer>
   </div> <!-- end .page-wrapper -->
   
-  <!-- JavaScript for Loader, Smart Header, and Scroll-Reveal -->
   <script>
-    // Loader: Check sessionStorage to run loader only once per session.
-    if (!sessionStorage.getItem("loaderShown")) {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          const loader = document.getElementById("loader");
-          loader.style.clipPath = "circle(0% at center)";
-          loader.addEventListener("transitionend", () => {
-            loader.style.display = "none";
-            sessionStorage.setItem("loaderShown", "true");
-          });
-        }, 1500); // Delay shortened to 1500ms
-      });
-    } else {
-      document.getElementById("loader").style.display = "none";
-    }
+    // Loader: Animate clip-path to reveal page, then hide loader.
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.clipPath = "circle(0% at center)";
+        loader.addEventListener("transitionend", () => {
+          loader.style.display = "none";
+        });
+      }, 1500);
+    });
     
-    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
+    // Smart header: Hide when scrolling down, show when scrolling up or when mouse is near the top.
     let lastScrollY = window.scrollY;
     const nav = document.getElementById("main-nav");
     window.addEventListener("scroll", () => {
