@@ -11,15 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Loader Placeholder (in case header.html includes it, you can also keep it here if you prefer) -->
-  <!-- If you want the loader to be consistent across pages, include it in header.html.
-       Otherwise, you can leave it here. For this example, we assume the loader is in header.html. -->
-  
-  <!-- Placeholder for Header Partial -->
+  <!-- Header Placeholder -->
   <div id="header"></div>
   
   <div class="page-wrapper">
-    <!-- (If the WhatsApp button isn’t included in header.html, you can keep it here.) -->
+    <!-- WhatsApp Button -->
     <div id="whatsapp-button" style="position: fixed; bottom: 20px; right: 20px; z-index: 1001;">
       <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
         <img src="images/whatsapp-icon.svg" alt="Contact us on WhatsApp" style="width: 60px; height: 60px;">
@@ -109,15 +105,14 @@
       </div> <!-- end .container -->
     </div> <!-- end .main-content -->
     
-    <!-- Placeholder for Footer Partial -->
+    <!-- Footer Placeholder -->
     <div id="footer"></div>
   </div> <!-- end .page-wrapper -->
 
-  <!-- Script to load external header and footer partials -->
   <script>
-    // Helper function to load a partial HTML file into a given selector
+    // A helper function to load a partial into a container
     function loadPartial(selector, file) {
-      fetch(file)
+      return fetch(file)
         .then(response => response.text())
         .then(data => {
           document.querySelector(selector).innerHTML = data;
@@ -125,22 +120,64 @@
         .catch(err => console.error(`Error loading ${file}:`, err));
     }
 
+    // We wait for both partials to load, then run the loader & script logic
     document.addEventListener("DOMContentLoaded", () => {
-      // Load header and footer partials
-      loadPartial("#header", "header.html");
-      loadPartial("#footer", "footer.html");
+      Promise.all([
+        loadPartial("#header", "header.html"),
+        loadPartial("#footer", "footer.html")
+      ])
+      .then(() => {
+        // Now the #loader and #main-nav are in the DOM
+        const loader = document.getElementById("loader");
+        const nav = document.getElementById("main-nav");
 
-      // Scroll-Reveal Animations using IntersectionObserver
-      const sections = document.querySelectorAll('.section');
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+        // Loader logic
+        if (!sessionStorage.getItem("loaderShown")) {
+          setTimeout(() => {
+            loader.style.clipPath = "circle(0% at center)";
+            loader.addEventListener("transitionend", () => {
+              loader.style.display = "none";
+              sessionStorage.setItem("loaderShown", "true");
+            });
+          }, 1500);
+        } else {
+          loader.style.display = "none";
+        }
+
+        // Toggle Menu for mobile
+        window.toggleMenu = function() {
+          const navLinks = document.getElementById('nav-links');
+          navLinks.classList.toggle('active');
+        }
+
+        // Smart header hide/show
+        let lastScrollY = window.scrollY;
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            nav.style.top = "-120px";
+          } else {
+            nav.style.top = "0";
+          }
+          lastScrollY = window.scrollY;
+        });
+        document.addEventListener("mousemove", e => {
+          if (e.clientY < 50) {
+            nav.style.top = "0";
           }
         });
-      }, { threshold: 0.2 });
-      sections.forEach(section => observer.observe(section));
+
+        // Scroll-Reveal Animations using IntersectionObserver
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        sections.forEach(section => observer.observe(section));
+      });
     });
   </script>
 </body>
