@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  
+<div id="loader">
+  <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
+</div>
+  
   <div class="page-wrapper">
     <!-- Navigation Bar -->
     <nav id="main-nav">
@@ -137,5 +142,23 @@
       sections.forEach(section => observer.observe(section));
     });
   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const loader = document.getElementById("loader");
+    // Using sessionStorage so the loader shows only once per session.
+    if (!sessionStorage.getItem("loaderShown")) {
+      setTimeout(() => {
+        loader.style.clipPath = "circle(0% at center)";
+        loader.addEventListener("transitionend", () => {
+          loader.style.display = "none";
+          sessionStorage.setItem("loaderShown", "true");
+        });
+      }, 1500);
+    } else {
+      loader.style.display = "none";
+    }
+  });
+</script>
+  
 </body>
 </html>
