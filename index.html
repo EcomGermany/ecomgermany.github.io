@@ -13,7 +13,8 @@
 <body>
   <!-- Loader Overlay -->
   <div id="loader">
-    <!-- The animated logo is loaded via an iframe. The CSS forces it to be circular. -->
+    <!-- The animated logo is loaded via an iframe.
+         The CSS forces it to be circular. -->
     <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
   </div>
 
@@ -166,21 +167,22 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Loader: Use localStorage so the loader appears only once per browser.
+      // Loader: Use sessionStorage so the loader shows once per session (until the browser closes).
       const loader = document.getElementById("loader");
-      if (!localStorage.getItem("loaderShown")) {
+      if (!sessionStorage.getItem("loaderShown")) {
         setTimeout(() => {
           loader.style.clipPath = "circle(0% at center)";
           loader.addEventListener("transitionend", () => {
             loader.style.display = "none";
-            localStorage.setItem("loaderShown", "true");
+            sessionStorage.setItem("loaderShown", "true");
           });
         }, 1500);
       } else {
+        // If sessionStorage is set, hide the loader immediately
         loader.style.display = "none";
       }
       
-      // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
+      // Smart Header: Hide when scrolling down, show when scrolling up or mouse near top.
       let lastScrollY = window.scrollY;
       const nav = document.getElementById("main-nav");
       window.addEventListener("scroll", () => {
