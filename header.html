@@ -1,26 +1,24 @@
-<!-- header.html (partial) -->
+<!-- header.html -->
 
-<!-- Loader Markup -->
+<!-- Loader Markup (no script here) -->
 <div id="loader">
   <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
 </div>
 
 <!-- Navigation Bar (Dark Header with Smart Hide/Show) -->
 <nav id="main-nav">
-  <!-- Brand (Logo & Text) -->
   <a href="index.html" class="brand">
     <img src="images/Azafranes Carrera Logo.svg" alt="Azafran Carrera Logo" class="logo-image">
     <span class="brand-text">Azafran Carrera</span>
   </a>
 
-  <!-- Hamburger Icon for mobile -->
+  <!-- Hamburger icon for mobile -->
   <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- Navigation Links -->
   <ul id="nav-links">
     <li><a href="index.html#home">Home</a></li>
     <li><a href="products.html">Products</a></li>
@@ -46,44 +44,3 @@
     </li>
   </ul>
 </nav>
-
-<script>
-  // SessionStorage Loader (appears once per session)
-  document.addEventListener("DOMContentLoaded", function() {
-    const loader = document.getElementById("loader");
-    if (!sessionStorage.getItem("loaderShown")) {
-      setTimeout(() => {
-        loader.style.clipPath = "circle(0% at center)";
-        loader.addEventListener("transitionend", () => {
-          loader.style.display = "none";
-          sessionStorage.setItem("loaderShown", "true");
-        });
-      }, 1500);
-    } else {
-      loader.style.display = "none";
-    }
-  });
-
-  // Toggle Menu for mobile
-  function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('active');
-  }
-
-  // Smart header hide/show
-  let lastScrollY = window.scrollY;
-  const nav = document.getElementById("main-nav");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 100) {
-      nav.style.top = "-120px";
-    } else {
-      nav.style.top = "0";
-    }
-    lastScrollY = window.scrollY;
-  });
-  document.addEventListener("mousemove", e => {
-    if (e.clientY < 50) {
-      nav.style.top = "0";
-    }
-  });
-</script>
