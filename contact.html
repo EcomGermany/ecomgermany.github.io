@@ -6,6 +6,7 @@
   <meta name="description" content="Contact - Azafran Carrera | Supply your restaurant or business with premium saffron.">
   <title>Contact - Azafran Carrera</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,9 +29,9 @@
             <img src="images/flag_uk.svg" alt="English" class="flag-icon">
           </a>
           <div class="dropdown-content">
-            <a href="index.html"><img src="images/flag_uk.svg" alt="English" class="flag-icon"> English</a>
-            <a href="index_es.html"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
-            <a href="index_de.html"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
+            <a href="contact.html?lang=en"><img src="images/flag_uk.svg" alt="English" class="flag-icon"> English</a>
+            <a href="contact.html?lang=es"><img src="images/flag_es.svg" alt="Español" class="flag-icon"> Español</a>
+            <a href="contact.html?lang=de"><img src="images/flag_de.svg" alt="Deutsch" class="flag-icon"> Deutsch</a>
           </div>
         </li>
       </ul>
@@ -39,11 +40,11 @@
     <!-- WhatsApp Button -->
     <div id="whatsapp-button">
       <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
-        <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp">
+        <img src="images/whatsapp-icon.svg" alt="Contact us on WhatsApp">
       </a>
     </div>
     
-    <!-- Main Content -->
+    <!-- Main Content Area -->
     <div class="main-content">
       <div class="container">
         <section id="contact" class="section">
@@ -55,15 +56,29 @@
           </p>
           <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             <div class="form-group">
-              <input type="text" name="name" placeholder="Name" required>
+              <label id="label-name" for="name">Full Name *</label>
+              <input type="text" name="name" id="name" placeholder="Your full name" required>
             </div>
             <div class="form-group">
-              <input type="email" name="email" placeholder="Email" required>
+              <label id="label-email" for="email">Email Address *</label>
+              <input type="email" name="email" id="email" placeholder="Your email address" required>
             </div>
             <div class="form-group">
-              <textarea name="message" rows="5" placeholder="Message" required></textarea>
+              <label id="label-client" for="client-type">I am a *</label>
+              <select name="client_type" id="client-type" required>
+                <option value="">Select an option</option>
+                <option value="private">Private Client</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="retail">Retail</option>
+                <option value="wholesale">Wholesale</option>
+                <option value="other">Other / No Comment</option>
+              </select>
             </div>
-            <button type="submit">Send Message</button>
+            <div class="form-group">
+              <label id="label-message" for="message">Message *</label>
+              <textarea name="message" id="message" rows="5" placeholder="Your message" required></textarea>
+            </div>
+            <button id="submit-button" type="submit">Send Message</button>
           </form>
         </section>
       </div>
@@ -86,7 +101,7 @@
       </div>
       <p class="footer-copy">© 2023 Azafran Carrera • Crafted with Excellence</p>
     </footer>
-  </div>
+  </div> <!-- end .page-wrapper -->
   
   <script>
     // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
@@ -120,5 +135,7 @@
       sections.forEach(section => observer.observe(section));
     });
   </script>
+  <!-- Include the localization script -->
+  <script src="localization.js"></script>
 </body>
 </html>
