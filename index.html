@@ -11,7 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Page Wrapper for Sticky Footer -->
+  <!-- Loader Overlay (only appears once per session) -->
+  <div id="loader">
+    <iframe src="animatedlogo.html" frameborder="0" scrolling="no"></iframe>
+  </div>
+
+  <!-- Page Wrapper for Sticky Footer Layout -->
   <div class="page-wrapper">
     
     <!-- Navigation Bar (Dark Header with Smart Hide/Show) -->
@@ -22,7 +27,7 @@
         <span>Azafran Carrera</span>
       </a>
       <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="index.html#home">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="recipes.html">Recipes</a></li>
         <li><a href="shop.html">Shop</a></li>
@@ -48,12 +53,12 @@
       </ul>
     </nav>
     
-    <!-- Main Content Area (with top margin to offset fixed header) -->
+    <!-- Main Content Area (with top margin to avoid header overlap) -->
     <div class="main-content">
       <!-- WhatsApp Button (fixed at bottom right) -->
       <div id="whatsapp-button">
         <a href="https://api.whatsapp.com/send?phone=+1234567890" target="_blank">
-          <img src="images/whatsapp-social-media-svgrepo-com.svg" alt="Contact us on WhatsApp">
+          <img src="images/whatsapp-icon.svg" alt="Contact us on WhatsApp">
         </a>
       </div>
       
@@ -77,7 +82,7 @@
       
       <!-- Additional Content Sections -->
       <div class="container">
-        <!-- Products Section (for example) -->
+        <!-- Products Section (example) -->
         <section id="products" class="section">
           <h2 class="section-title">Our Premium Selection</h2>
           <div class="gallery">
@@ -93,7 +98,7 @@
           </div>
         </section>
         
-        <!-- About Section (for example) -->
+        <!-- About Section (example) -->
         <section id="about" class="section">
           <h2 class="section-title">Our Legacy</h2>
           <p>
@@ -102,7 +107,7 @@
           </p>
         </section>
         
-        <!-- Contact Section (for example) -->
+        <!-- Contact Section (example) -->
         <section id="contact" class="section">
           <h2 class="section-title">Contact Us</h2>
           <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -140,8 +145,25 @@
     </footer>
   </div> <!-- end .page-wrapper -->
   
+  <!-- JavaScript for Loader, Smart Header, and Scroll-Reveal -->
   <script>
-    // Smart header: hide when scrolling down, show when scrolling up or when mouse near top.
+    // Loader: Check sessionStorage to run loader only once per session.
+    if (!sessionStorage.getItem("loaderShown")) {
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          loader.style.clipPath = "circle(0% at center)";
+          loader.addEventListener("transitionend", () => {
+            loader.style.display = "none";
+            sessionStorage.setItem("loaderShown", "true");
+          });
+        }, 1500); // Delay shortened to 1500ms
+      });
+    } else {
+      document.getElementById("loader").style.display = "none";
+    }
+    
+    // Smart header: hide when scrolling down, show when scrolling up or when mouse is near the top.
     let lastScrollY = window.scrollY;
     const nav = document.getElementById("main-nav");
     window.addEventListener("scroll", () => {
@@ -158,7 +180,7 @@
       }
     });
     
-    // Scroll-Reveal Animations
+    // Scroll-Reveal Animations using IntersectionObserver
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries, observer) => {
